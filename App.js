@@ -15,7 +15,7 @@ const AppNavigator = StackNavigator(
 
     }, {
         initialRouteName: "Drawer",
-        // headerMode: "none",
+        headerMode: "none",
     });
 
 

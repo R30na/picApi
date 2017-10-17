@@ -5,12 +5,9 @@
  */
 
 import React, {Component} from 'react';
-import {TabBarBottom, TabNavigator} from "react-navigation";
 import SceneDetection from "./SceneDetection";
-import ImageModeration from "./ImageModeration";
 import FacialAnalysis from "./FacialAnalysis";
 import FaceComparison from "./FaceComparison";
-import FacialRecognition from "./FacialRecognition";
 import CelebrityRecognition from "./CelebrityRecognition";
 import {
     Container,
@@ -24,45 +21,93 @@ import {
     Right,
     Body,
     Icon,
-    Text, Root
+    Tabs,
+    Tab,
+    TabHeading,
+    Text,
 } from 'native-base';
+
+// const TabArray = [
+//     {
+//         name:'SceneDetection',
+//         icon:'images',
+//     },
+//     {
+//         name:'FacialAnalysis',
+//         icon:'happy'
+//     },
+//     {
+//         name:'FaceComparison',
+//         icon:'person'
+//     },
+//     {
+//         name:'CelebrityRecognition',
+//         icon:'happy'
+//     },
+// ];
 
 export default class HomeScreen extends Component<{}> {
 
-    static navigationOptions = {
-        title: 'Picture Analysis',
-
-    }
 
     render() {
         return (
-            <AppNavigation/>
+            <Container>
+                <Header hasTabs>
+                    <Left>
+                        <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
+                            <Icon name="menu" />
+                        </Button>
+                    </Left>
+                    <Body style={{ flex: 3 }}>
+                    <Title> Picture Analysis</Title>
+                    </Body>
+                    <Right />
+                </Header>
+                <Tabs style={{ elevation: 3 }} tabBarPosition="overlayBottom">
+                    <Tab
+                        heading={<TabHeading><Icon name="md-images" /><Text>Scene</Text></TabHeading>}>
+                        <SceneDetection/>
+                    </Tab>
+                    <Tab heading={<TabHeading><Icon name="md-happy" /><Text>Analysis</Text></TabHeading>}>
+                        <FacialAnalysis/>
+                    </Tab>
+                    <Tab heading={<TabHeading><Icon name="md-person" /><Text>Compare</Text></TabHeading>}>
+                        <FaceComparison/>
+                    </Tab>
+                    <Tab heading={<TabHeading><Icon name="md-happy" /><Text>Celeb</Text></TabHeading>}>
+                        <CelebrityRecognition/>
+                    </Tab>
+                </Tabs>
+
+
+
+            </Container>
         );
     }
 }
 
-const AppNavigation = TabNavigator({
-
-    SceneDetection: {screen: SceneDetection,},
-    // ImageModeration: {screen: ImageModeration,},
-    FacialAnalysis: {screen: FacialAnalysis,},
-    FaceComparison: {screen: FaceComparison,},
-    // FacialRecognition: {screen: FacialRecognition,},
-    CelebrityRecognition: {screen: CelebrityRecognition,},
-
-}, {
-    tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
-    swipeEnabled: true,
-    animationEnabled: true,
-    lazy: true,
-    tabBarOptions: {
-        activeBackgroundColor: '#c7e9ff',
-        showIcon: true,
-        scrollEnabled: true,
-        style: {
-            height: 60,
-        },
-    },
-
-});
+// const AppNavigation = TabNavigator({
+//
+//     SceneDetection: {screen: SceneDetection,},
+//     // ImageModeration: {screen: ImageModeration,},
+//     FacialAnalysis: {screen: FacialAnalysis,},
+//     FaceComparison: {screen: FaceComparison,},
+//     // FacialRecognition: {screen: FacialRecognition,},
+//     CelebrityRecognition: {screen: CelebrityRecognition,},
+//
+// }, {
+//     tabBarComponent: TabBarBottom,
+//     tabBarPosition: 'bottom',
+//     swipeEnabled: true,
+//     animationEnabled: true,
+//     lazy: true,
+//     tabBarOptions: {
+//         activeBackgroundColor: '#c7e9ff',
+//         showIcon: true,
+//         scrollEnabled: true,
+//         style: {
+//             height: 60,
+//         },
+//     },
+//
+// });
