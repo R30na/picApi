@@ -134,8 +134,8 @@ export default class FacialAnalysis extends Component<{}> {
             CollectionId: "myphotos"
         };
         var rekognition = new AWS.Rekognition({
-            accessKeyId: 'AKIAJRZSGYE4N735V7AA',
-            secretAccessKey: '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',
+            accessKeyId: '',
+            secretAccessKey: '',
             region: 'us-east-1'
         });
 
